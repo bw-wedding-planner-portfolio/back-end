@@ -67,7 +67,7 @@ router.put('/:id/post/:pid', (req,res) => {
     post.planner_id = planner_id;
     const {pid} = req.params;
 
-    db.getEvent(pid)
+    db.getPost(pid)
     .then(posts => {
         if(posts) {
             db.updatePost(post, pid)
@@ -84,7 +84,7 @@ router.put('/:id/post/:pid', (req,res) => {
 });
 
 //DELETE /auth/user/:id/posts/:pid
-router.delete('/:id/posts/:pid', (req, res) => {
+router.delete('/:id/post/:pid', (req, res) => {
     const {id} = req.params;
     const {pid} = req.params;
 

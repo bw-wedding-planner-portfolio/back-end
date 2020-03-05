@@ -51,7 +51,7 @@ function addPost(post){
   return db('weddingPost')
   .insert(post, "id")
   .then(([id]) => {
-      return getEvent(id)
+      return getPost(id)
     })
 }
 
@@ -59,9 +59,9 @@ function updatePost(post, id){
     return db('weddingPost')
     .update(post, "id")
     .where({id})
-    .then(([id]) => {
-        return getEvent(id)
-    })
+    // .then(([id]) => {
+    //     return getPost(id)
+    // })
   
 }
 
