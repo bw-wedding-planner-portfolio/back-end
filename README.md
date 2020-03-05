@@ -387,7 +387,7 @@ _HTTP Method:_ **[PUT]**
 
 ### Deletes users' post by ID.
 
-_Method URL:_ `/auth/user/:id/posts/:pid`
+_Method URL:_ `/auth/user/:id/post/:pid`
 
 ## **Need user ID to delete users' post **
 
