@@ -83,7 +83,7 @@ router.put('/:id/post/:pid', (req,res) => {
     });
 });
 
-//DELETE /auth/user/:id/posts/:pid
+//DELETE /auth/user/:id/post/:pid
 router.delete('/:id/post/:pid', (req, res) => {
     const {id} = req.params;
     const {pid} = req.params;
