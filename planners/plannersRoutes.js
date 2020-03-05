@@ -72,7 +72,7 @@ router.put('/:id/post/:pid', (req,res) => {
         if(posts) {
             db.updatePost(post, pid)
             .then(update => {
-                res.status(200).json({update});
+                res.status(200).json(update);
             });
         } else {
             res.status(400).json({error: "Could not find event with given id"})

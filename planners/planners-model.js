@@ -59,6 +59,9 @@ function updatePost(post, id){
     return db('weddingPost')
     .update(post, "id")
     .where({id})
+    .then(([id]) => {
+        return getEvent(id)
+    })
   
 }
 
