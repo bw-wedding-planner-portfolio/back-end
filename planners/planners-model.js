@@ -57,8 +57,10 @@ function addPost(post){
 
 function updatePost(post, id){
     return db('weddingPost')
+     .where({id})
+
     .update(post, "id")
-    .where({id})
+   
     // .then(([id]) => {
     //     return getPost(id)
     // })
