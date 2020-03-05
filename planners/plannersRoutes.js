@@ -59,8 +59,8 @@ router.post('/:id/posts', (req, res) => {
     
 })
 
-//PUT /auth/user/:id/posts/:pid
-router.put('/:id/posts/:pid', (req,res) => {
+//PUT /auth/user/:id/post/:pid
+router.put('/:id/post/:pid', (req,res) => {
     const {id} = req.params;
     let post = req.body;
     planner_id = id;
