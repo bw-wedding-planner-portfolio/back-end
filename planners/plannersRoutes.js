@@ -67,7 +67,7 @@ router.put('/:id/post/:pid', (req,res) => {
     post.planner_id = planner_id;
     const {pid} = req.params;
 
-    db.getPost(pid)
+    db.getEvent(pid)
     .then(posts => {
         if(posts) {
             db.updatePost(post, pid)
