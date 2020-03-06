@@ -1,6 +1,6 @@
 const express = require('express');
-// const helmet = require('helmet');
-// const cors = require('cors');
+const helmet = require('helmet');
+const cors = require('cors');
 
 const authenticate = require('../auth/authenticate-middleware');
 const authRouter = require('../auth/authRouter.js');
@@ -14,8 +14,8 @@ server.use(function (req, res, next) {
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
     next();
 });
-// server.use(helmet());
-// server.use(cors({origin: '*'}));
+server.use(helmet());
+server.use(cors());
 server.use(express.json());
 
 
