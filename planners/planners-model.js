@@ -34,7 +34,7 @@ function update(id, changes) {
 function getPost(id) {
     return db('weddingPost as w')
     .join('planner as p','p.id', 'w.planner_id')
-    .select('w.*', 'p.firstName', 'p.lastName')
+    .select('w.*')
     .where({'p.id': id})
     // .select('weddingPost.*','planner.firstName', 'planner.lastName')
     // .from('weddingPost')
