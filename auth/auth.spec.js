@@ -25,8 +25,28 @@ describe('auth Routes', () => {
       })
       expect(res.status).toBe(201) 
     })
+ 
+    it('returns an object with a json formatted body', async() => {
+      const res = await request(server)
+        .post('/auth/register')
+        .send({
+          firstName: "test",
+          lastName: "test",
+          email: Date.now(),
+          city: "test",
+          state: "test",
+          username: "miley",
+          password: "test", 
+          pricing: "test",
+          phoneNumber: Date.now()
+        })
+      expect(res.type).toMatch(/json/)
+    })
   })
+
+
 })
+
 
 describe('POST /login', async() => {
   it('Logins in a user and returns 200(OK)', async() => {
@@ -38,9 +58,7 @@ describe('POST /login', async() => {
     })
     expect(res.status).toBe(200)
   })
-})
 
-describe('POST /login', async() => {
   it('Returns statud 401 if user credentials are incorrect', async() => {
     const res = await request(server)
     .post('/auth/login')
@@ -50,5 +68,31 @@ describe('POST /login', async() => {
     })
     expect(res.status).toBe(401)
   })
+
+  it('Returns a token', async() => {
+    await request(server)
+      .post('/auth/register')
+      .send({
+        firstName: "test",
+        lastName: "test",
+        email: Date.now(),
+        city: "test",
+        state: "test",
+        username: "miley",
+        password: "test", 
+        pricing: "test",
+        phoneNumber: Date.now()
+      })
+    let res = await request(server)
+      .post('/auth/login')
+      .send({
+        username: "miley",
+        password: "test"
+      })
+    expect(res.body).toHaveProperty('token')
+  })
 })
+
+
+
 
