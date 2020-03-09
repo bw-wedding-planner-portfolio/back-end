@@ -2,6 +2,7 @@ const server = require('../api/server');
 const request = require('supertest');
 const knex = require('../database/dbConfig');
 const db = require('../database/dbConfig');
+const Users = require('./planners-model');
 
 let token;
 
@@ -9,7 +10,6 @@ let token;
 //     return await db('planner').del()
 //     // return db.raw("TRUNCATE planner planner RESTART IDENTITY CASCADE")
 // });
-
 
 describe('plannerRoutes.js', () => {
     beforeEach(async () => {
@@ -330,6 +330,35 @@ describe('DELETE /auth/user/id/post/pid', () => {
         .set('Authorization', token)
         
         expect(res2.type).toMatch(/json/)
+    })
+})
+
+describe('add()', () => {
+    it('should add a user to the planner database', async() => {
+        await Users.add({
+            firstName: "test",
+            lastName: "test",
+            email: Date.now(),
+            city: "test",
+            state: "test", 
+            username: "testing",
+            password: "test", 
+            pricing: "test",
+            phoneNumber: Date.now()
+        })
+        let user2 = await Users.add({
+            firstName: "test",
+            lastName: "test",
+            email: Date.now(),
+            city: "test",
+            state: "test", 
+            username: "test",
+            password: "test", 
+            pricing: "test",
+            phoneNumber: Date.now()
+        })
+        const users = await db('planner');
+        expect(users).toHaveLength(3)
     })
 })
 

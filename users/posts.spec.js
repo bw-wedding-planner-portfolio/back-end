@@ -34,7 +34,7 @@ describe('getPost()', () => {
     it('should return an array', async() => {
         let res = await Users
         .getPosts('weddingPost')
-        expect(Array.isArray(res).toBe(true))
+        expect(Array.isArray(res)).toBe(true)
     })
 })
 
