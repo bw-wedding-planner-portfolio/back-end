@@ -18,7 +18,11 @@ router.get('/weddingposts/:id', (req, res) => {
     const {id} = req.params;
     db.getById(id)
     .then(posts => {
+        if(posts) {
         res.status(200).json(posts)
+        } else {
+            res.status(400).json({message: 'error'})
+        }
     })
     .catch(err => {
         console.log(err)
