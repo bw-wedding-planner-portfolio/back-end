@@ -362,5 +362,11 @@ describe('add()', () => {
     })
 })
 
+describe('find()', () => {
+    it('should return an array of the list of users', async() => {
+        let res = await Users.find('planner')
+        expect(Array.isArray(res)).toBe(true);
+    })
+})
 
 
