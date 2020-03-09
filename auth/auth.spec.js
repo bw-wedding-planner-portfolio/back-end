@@ -48,7 +48,7 @@ describe('auth Routes', () => {
 })
 
 
-describe('POST /login', async() => {
+describe('POST /login', () => {
   it('Logins in a user and returns 200(OK)', async() => {
     const res = await request(server)
     .post('/auth/login')

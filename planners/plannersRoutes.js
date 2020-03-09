@@ -18,7 +18,11 @@ router.get('/:id', (req, res) => {
     const id = req.params.id;
     db.findById(id)
     .then(user => {
-        res.status(200).json(user)
+        if(user) {
+            res.status(200).json(user)
+        } else {
+            res.status(404).json({message: 'The user with the given ID does not exist'})
+        }
     })
     .catch(err => {
         console.log(err)
@@ -37,7 +41,7 @@ router.get('/:id/posts', (req,res) => {
     })
     .catch( err => {
         console.log(err)
-        res.status(200).json(err)
+        res.status(500).json(err)
     })
 })
 
